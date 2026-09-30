@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A browser-based Tetris game built with vanilla JavaScript.">
+  <title>Tetris</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <section class="game-card" aria-label="Tetris game">
+      <div class="board-wrap">
+        <canvas id="game" width="300" height="600" aria-label="Tetris board"></canvas>
+        <div id="overlay" class="overlay hidden">
+          <h1 id="overlay-title">Paused</h1>
+          <p id="overlay-message">Press P to continue.</p>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <div>
+          <p class="eyebrow">VANILLA JAVASCRIPT</p>
+          <h1>Tetris</h1>
+          <p class="subtitle">Clear lines, level up, and beat your high score.</p>
+        </div>
+
+        <div class="stats" aria-live="polite">
+          <div class="stat"><span>Score</span><strong id="score">0</strong></div>
+          <div class="stat"><span>Lines</span><strong id="lines">0</strong></div>
+          <div class="stat"><span>Level</span><strong id="level">1</strong></div>
+          <div class="stat"><span>High Score</span><strong id="high-score">0</strong></div>
+        </div>
+
+        <div class="preview-card">
+          <div class="preview-header"><span>Next</span><span id="next-name">-</span></div>
+          <canvas id="next" width="120" height="120" aria-label="Next piece preview"></canvas>
+        </div>
+
+        <div class="controls">
+          <h2>Controls</h2>
+          <p><kbd>←</kbd> <kbd>→</kbd> Move</p>
+          <p><kbd>↓</kbd> Soft drop</p>
+          <p><kbd>Space</kbd> Hard drop</p>
+          <p><kbd>Z</kbd> / <kbd>X</kbd> Rotate</p>
+          <p><kbd>P</kbd> Pause · <kbd>R</kbd> Restart</p>
+        </div>
+
+        <button id="restart" type="button">Restart game</button>
+      </aside>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
