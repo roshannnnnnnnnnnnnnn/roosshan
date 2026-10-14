@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Chip Boom 2026: a student-friendly newsroom exploring AI, semiconductor market growth, Korean chip exports, and industry risks.">
+  <meta name="theme-color" content="#071a3c">
+  <title>Chip Boom 2026 | Semiconductor Industry Newsroom</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --blue: #0b3d91;
+      --cyan: #00a9d6;
+      --dark: #101828;
+      --gray: #55627a;
+      --light: #f4f7fb;
+      --white: #fff;
+      --card: #fff;
+      --line: #dfe6ef;
+      --soft-cyan: #eef9fd;
+      --shadow: 0 10px 25px rgba(16, 24, 40, .08);
+      --header: linear-gradient(135deg, #071a3c 0%, #0b3d91 55%, #00a9d6 100%);
+    }
+    body.dark {
+      color-scheme: dark;
+      --dark: #e8eef8;
+      --gray: #a8b5ca;
+      --light: #0b1220;
+      --white: #101b2d;
+      --card: #111e32;
+      --line: #293951;
+      --soft-cyan: #102b3a;
+      --shadow: 0 12px 28px rgba(0, 0, 0, .22);
+      --header: linear-gradient(135deg, #050d1e 0%, #102c60 58%, #006b86 100%);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.65;
+      transition: background .25s ease, color .25s ease;
+    }
+    a { color: var(--cyan); overflow-wrap: anywhere; }
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 3px solid #ffbf47; outline-offset: 3px;
+    }
+    .site-header {
+      background: var(--header); color: #fff; padding: 28px 20px 70px;
+      position: relative; overflow: hidden;
+    }
+    .site-header::before, .site-header::after {
+      content: ""; position: absolute; border: 1px solid rgba(255,255,255,.16);
+      border-radius: 50%; pointer-events: none;
+    }
+    .site-header::before { width: 360px; height: 360px; right: -90px; top: -180px; }
+    .site-header::after { width: 230px; height: 230px; left: -100px; bottom: -150px; }
+    .topbar {
+      max-width: 1100px; margin: 0 auto 42px; display: flex; align-items: center;
+      justify-content: space-between; gap: 16px; position: relative; z-index: 2;
+    }
+    .brand { font-weight: 800; letter-spacing: .04em; color: #fff; text-decoration: none; }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .menu-toggle, .theme-toggle {
+      color: #fff; background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.32);
+      border-radius: 999px; padding: 9px 14px; font: inherit; font-weight: 700; cursor: pointer;
+    }
+    .site-nav { display: flex; align-items: center; gap: 18px; }
+    .site-nav a { color: #fff; text-decoration: none; font-size: .92rem; font-weight: 600; }
+    .site-nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
+    .menu-toggle { display: none; }
+    .hero { max-width: 900px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+    .badge {
+      display: inline-block; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.35);
+      padding: 6px 14px; border-radius: 999px; font-size: .78rem; letter-spacing: .09em;
+      text-transform: uppercase; margin-bottom: 18px;
+    }
+    h1 { margin: 0 0 14px; font-size: clamp(2rem, 6vw, 3.6rem); line-height: 1.12; letter-spacing: -.035em; }
+    .subtitle { max-width: 760px; margin: 0 auto; font-size: 1.08rem; opacity: .94; }
+    .meta { margin-top: 20px; font-size: .9rem; opacity: .9; }
+    main { max-width: 1040px; margin: -34px auto 60px; padding: 0 18px; position: relative; }
+    .intro-card, section {
+      background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+      box-shadow: var(--shadow); padding: 28px; margin-bottom: 24px;
+    }
+    h2 { margin: 0 0 14px; color: var(--cyan); font-size: 1.5rem; line-height: 1.3; }
+    h3 { margin: 10px 0 8px; color: var(--cyan); line-height: 1.35; }
+    p { margin: 0 0 14px; }
+    p:last-child { margin-bottom: 0; }
+    .highlight {
+      border-left: 5px solid var(--cyan); background: var(--soft-cyan);
+      padding: 14px 16px; border-radius: 10px; font-weight: 600;
+    }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; }
+    .section-note { color: var(--gray); font-size: .9rem; margin-bottom: 14px; }
+    .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 16px; }
+    .fact {
+      background: var(--light); border: 1px solid var(--line); border-radius: 14px;
+      padding: 18px; transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .fact:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .fact-number {
+      display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px;
+      border-radius: 50%; background: var(--blue); color: #fff; font-weight: 800; margin-bottom: 10px;
+    }
+    .fact strong { color: var(--cyan); }
+    .tag { display: inline-block; font-size: .72rem; font-weight: 800; padding: 4px 10px; border-radius: 999px; margin-bottom: 9px; }
+    .past { background: #e7f6ec; color: #176b37; }
+    .future { background: #fff2e0; color: #854800; }
+    body.dark .past { background: #153a2a; color: #a9edc1; }
+    body.dark .future { background: #4a3218; color: #ffd59a; }
+    .terms-button, .primary-button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--blue); color: #fff; border: 0; padding: 12px 20px;
+      font-size: .98rem; font-weight: 750; border-radius: 999px; cursor: pointer;
+      transition: transform .15s ease, filter .15s ease;
+    }
+    .terms-button:hover, .primary-button:hover { filter: brightness(1.12); transform: translateY(-1px); }
+    #termList { display: none; margin-top: 18px; }
+    #termList.open { display: block; animation: fade .25s ease; }
+    @keyframes fade { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+    .term { border-top: 1px solid var(--line); padding: 14px 0; }
+    .term:first-child { border-top: 0; }
+    .term-name { font-weight: 800; color: var(--cyan); }
+    .chart-wrap { width: 100%; overflow-x: auto; padding: 8px 0 2px; }
+    .chart { min-width: 290px; width: 100%; height: auto; display: block; }
+    .chart text { fill: var(--dark); font-family: inherit; font-size: 12px; }
+    .chart .bar { fill: var(--blue); }
+    .chart .bar-accent { fill: var(--cyan); }
+    .chart-caption { color: var(--gray); font-size: .85rem; margin-top: 8px; }
+    .outlook-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 16px; }
+    .outlook-box { border-radius: 14px; padding: 18px; }
+    .growth { background: #eaf7ef; border: 1px solid #bfe3cb; color: #173b27; }
+    .risk { background: #fff4f2; border: 1px solid #f3c8bf; color: #55251d; }
+    body.dark .growth { background: #123326; border-color: #285a40; color: #d5f3df; }
+    body.dark .risk { background: #3a211f; border-color: #6a3831; color: #ffe0db; }
+    .sources { font-size: .94rem; }
+    .sources li { margin-bottom: 14px; padding-left: 4px; }
+    .sources a { display: inline-block; margin-top: 4px; }
+    footer { text-align: center; padding: 28px 16px 40px; color: var(--gray); font-size: .88rem; }
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .55s ease, transform .55s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+    @media (max-width: 760px) {
+      .topbar { margin-bottom: 32px; }
+      .menu-toggle { display: inline-flex; }
+      .site-nav {
+        display: none; position: absolute; top: calc(100% + 10px); left: 0; right: 0;
+        flex-direction: column; align-items: stretch; gap: 0; padding: 8px;
+        border-radius: 14px; background: #071a3c; box-shadow: 0 12px 28px rgba(0,0,0,.2);
+      }
+      .site-nav.open { display: flex; }
+      .site-nav a { padding: 12px; border-radius: 8px; }
+      .site-nav a:hover { background: rgba(255,255,255,.1); }
+      .site-header { padding: 22px 16px 58px; }
+      .intro-card, section { padding: 21px; }
+      main { padding: 0 12px; }
+    }
+    @media (max-width: 420px) {
+      .brand { font-size: .9rem; }
+      .theme-toggle { padding: 8px 10px; font-size: .85rem; }
+      .menu-toggle { padding: 8px 10px; font-size: .85rem; }
+      .intro-card, section { border-radius: 14px; }
+    }
+  </style>
+</head>
+<body>
+<header class="site-header" id="top">
+  <div class="topbar">
+    <a class="brand" href="#top">CHIP BOOM <span aria-hidden="true">/</span> 2026</a>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">🌙 Dark mode</button>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav">☰ Menu</button>
+    </div>
+    <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+      <a href="#overview">Overview</a>
+      <a href="#facts">Key facts</a>
+      <a href="#chart">Chart</a>
+      <a href="#terms">Terms</a>
+      <a href="#outlook">Outlook</a>
+      <a href="#sources">Sources</a>
+    </nav>
+  </div>
+  <div class="hero">
+    <div class="badge">Student Semiconductor Newsroom</div>
+    <h1>Chip Boom 2026:<br>How AI Is Changing Tiny Parts</h1>
+    <p class="subtitle">Semiconductors are small chips inside almost every electronic device. In 2026, artificial intelligence has made them more important than ever.</p>
+    <div class="meta">Created by: <strong>Kunwar Roshan</strong><br>Material checked: <strong>October 14, 2026</strong></div>
+  </div>
+</header>
+
+<main>
+  <section class="intro-card reveal" id="overview">
+    <h2>What is happening?</h2>
+    <p>AI needs enormous computing power. To work well, AI systems need special chips and memory that can move and store huge amounts of data very quickly.</p>
+    <p>In 2026, demand for these chips has grown rapidly. This has helped global semiconductor companies and Korean memory makers such as Samsung Electronics and SK hynix.</p>
+    <div class="highlight">Simple idea: AI is like a hungry student. Semiconductors are its brain, and memory chips are its notebooks. Better notebooks help it learn and work faster.</div>
+  </section>
+
+  <section class="reveal" id="facts">
+    <div class="section-heading"><h2>5 Key Facts</h2></div>
+    <p class="section-note">Historical results and forecasts are labeled separately. Forecasts may change as new data becomes available.</p>
+    <div class="facts">
+      <article class="fact">
+        <span class="tag past">Past performance</span><br><span class="fact-number">1</span>
+        <p>In the first half of 2026, the global semiconductor market reached <strong>US$702 billion</strong>. This was <strong>102% higher</strong> than in the first half of 2025.</p>
+        <p><a href="https://www.wsts.org/76/Global-Semiconductor-Market-records-exceptional-growth-in-Q2-2026" target="_blank" rel="noopener noreferrer">WSTS source</a></p>
+      </article>
+      <article class="fact">
+        <span class="tag past">Past performance</span><br><span class="fact-number">2</span>
+        <p>Memory chips grew the fastest. Global memory semiconductor sales increased by <strong>305% year over year</strong> in the first half of 2026.</p>
+        <p><a href="https://www.wsts.org/76/Global-Semiconductor-Market-records-exceptional-growth-in-Q2-2026" target="_blank" rel="noopener noreferrer">WSTS source</a></p>
+      </article>
+      <article class="fact">
+        <span class="tag future">Future projection</span><br><span class="fact-number">3</span>
+        <p>WSTS projects that the global semiconductor market will reach about <strong>US$1.655 trillion in 2026</strong>, with about <strong>108% annual growth</strong>. This is a forecast, not a final result.</p>
+        <p><a href="https://www.wsts.org/76/Global-Semiconductor-Market-records-exceptional-growth-in-Q2-2026" target="_blank" rel="noopener noreferrer">WSTS source</a></p>
+      </article>
+      <article class="fact">
+        <span class="tag past">Past performance</span><br><span class="fact-number">4</span>
+        <p>Korea’s semiconductor exports reached <strong>US$44.82 billion in June 2026</strong>. They rose <strong>199.5% year over year</strong> and were <strong>43.8%</strong> of Korea’s total exports.</p>
+        <p><a href="https://english.hani.co.kr/arti/english_edition/e_business/1266432.html" target="_blank" rel="noopener noreferrer">Hankyoreh / MOTIE source</a></p>
+      </article>
+      <article class="fact">
+        <span class="tag future">Future projection</span><br><span class="fact-number">5</span>
+        <p>KIET projects that Korea’s semiconductor exports will grow by <strong>101.9% year over year</strong> in the second half of 2026. AI servers, high-performance memory, and SSD demand are major reasons.</p>
+        <p><a href="https://www.kiet.re.kr/en/pub/ecoreviewDetailView?detail_no=1185&amp;year=2026&amp;month=&amp;sval=" target="_blank" rel="noopener noreferrer">KIET source</a></p>
+      </article>
+    </div>
+  </section>
+
+  <section class="reveal" id="chart">
+    <h2>Market Growth at a Glance</h2>
+    <p>This chart compares the reported first-half 2026 market size with the full-year 2026 forecast. They cover different time periods, so the bars are not a like-for-like growth comparison.</p>
+    <div class="chart-wrap">
+      <svg class="chart" viewBox="0 0 700 260" role="img" aria-labelledby="chartTitle chartDesc">
+        <title id="chartTitle">Semiconductor market size in 2026</title>
+        <desc id="chartDesc">First half of 2026: 702 billion US dollars, reported result. Full year 2026: 1.655 trillion US dollars, forecast.</desc>
+        <line x1="190" y1="42" x2="190" y2="208" stroke="currentColor" opacity=".25"/>
+        <line x1="190" y1="208" x2="650" y2="208" stroke="currentColor" opacity=".25"/>
+        <text x="8" y="78">H1 2026 actual</text>
+        <rect class="bar" x="190" y="53" width="195" height="42" rx="7"/>
+        <text x="397" y="79" font-weight="700">US$702B</text>
+        <text x="8" y="151">Full-year forecast</text>
+        <rect class="bar-accent" x="190" y="126" width="460" height="42" rx="7"/>
+        <text x="640" y="151" text-anchor="end" font-weight="700" fill="#fff">US$1.655T</text>
+        <text x="190" y="232">0</text>
+        <text x="420" y="232" text-anchor="middle">Approximate scale</text>
+        <text x="650" y="232" text-anchor="end">US$1.655T</text>
+      </svg>
+    </div>
+    <p class="chart-caption">Sources: WSTS Q2 2026 market report. “Actual” means reported data for the period; “forecast” means an estimate for the full year, not a final result.</p>
+  </section>
+
+  <section class="reveal" id="terms">
+    <h2>Semiconductor Words</h2>
+    <p>Click the button to see easy definitions of important semiconductor terms.</p>
+    <button class="terms-button" id="termsButton" type="button" aria-expanded="false" aria-controls="termList">View term definitions</button>
+    <div id="termList">
+      <div class="term"><span class="term-name">Semiconductor</span><p>A tiny component, often made from silicon, that controls electricity. Semiconductors work like tiny switches inside computers, phones, cars, and AI data centers.</p></div>
+      <div class="term"><span class="term-name">AI semiconductor</span><p>A chip made to process AI tasks, such as understanding language, recognizing images, or training AI models. It processes huge amounts of data very quickly.</p></div>
+      <div class="term"><span class="term-name">Memory semiconductor</span><p>A chip that stores data. DRAM is fast temporary memory, NAND stores data for longer periods, and HBM moves data extremely quickly for AI systems.</p></div>
+      <div class="term"><span class="term-name">HBM: High Bandwidth Memory</span><p>A special high-speed memory used near AI processors. HBM helps AI chips access massive amounts of data without slowing down.</p></div>
+    </div>
+  </section>
+
+  <section class="reveal" id="outlook">
+    <h2>2026 Outlook</h2>
+    <div class="outlook-grid">
+      <div class="outlook-box growth">
+        <h3>Why the industry may keep growing</h3>
+        <p>Companies around the world are investing in AI data centers and AI servers. These systems need advanced chips, HBM, DRAM, NAND, and SSDs.</p>
+        <p>Korea is in a strong position because its companies produce important memory products for AI. Strong memory demand has helped Korean exports grow.</p>
+      </div>
+      <div class="outlook-box risk">
+        <h3>What could slow the boom?</h3>
+        <p>The semiconductor industry can be cyclical. If AI investment slows, memory prices and demand may fall.</p>
+        <p>KDI warns that this concentration can make Korea more vulnerable when the semiconductor market weakens.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sources reveal" id="sources">
+    <h2>Original Sources</h2>
+    <ol>
+      <li><strong>WSTS.</strong> “Global Semiconductor Market records exceptional growth in Q2 2026.” Reports H1 2026 market size, memory growth, and the full-year 2026 projection.<br><a href="https://www.wsts.org/76/Global-Semiconductor-Market-records-exceptional-growth-in-Q2-2026" target="_blank" rel="noopener noreferrer">Open WSTS report</a></li>
+      <li><strong>WSTS.</strong> “Global Semiconductor Market Surges Beyond USD 1.5 Trillion in 2026,” Spring 2026 forecast, published May 2026. This is an earlier forecast; the Q2 release above includes newer actual data.<br><a href="https://www.wsts.org/esraCMS/extension/media/f/WST/7618/WSTS_FC-Release-2026-May.pdf" target="_blank" rel="noopener noreferrer">Open WSTS Spring 2026 forecast (PDF)</a></li>
+      <li><strong>Hankyoreh English.</strong> “Korea on pace to record $1 trillion in exports in 2026,” July 2, 2026. Reports Korea’s June 2026 semiconductor exports using Ministry of Trade, Industry and Resources data.<br><a href="https://english.hani.co.kr/arti/english_edition/e_business/1266432.html" target="_blank" rel="noopener noreferrer">Open Hankyoreh article</a></li>
+      <li><strong>Korea Institute for Industrial Economics &amp; Trade (KIET).</strong> 2026 economic review. Projects Korean semiconductor export growth in H2 2026.<br><a href="https://www.kiet.re.kr/en/pub/ecoreviewDetailView?detail_no=1185&amp;year=2026&amp;month=&amp;sval=" target="_blank" rel="noopener noreferrer">Open KIET review</a></li>
+      <li><strong>Korea Development Institute (KDI).</strong> “Semiconductor Market Trends and Macroeconomic Implications.” Discusses memory-cycle risks and Korea’s dependence on memory exports.<br><a href="https://www.kdi.re.kr/eng/research/analysisView?art_no=3480" target="_blank" rel="noopener noreferrer">Open KDI analysis</a></li>
+    </ol>
+    <p class="chart-caption"><strong>Accuracy note:</strong> The figures and source descriptions above are preserved from the supplied draft and have not been independently re-verified in this HTML editing step. Please check each original report before submitting or publishing.</p>
+  </section>
+</main>
+
+<footer>
+  Chip Boom 2026 | Student Newsroom Project<br>
+  Created by Kunwar Roshan<br>
+  Past performance and future projections are labeled separately.
+</footer>
+
+<script>
+  (() => {
+    const termsButton = document.getElementById("termsButton");
+    const termList = document.getElementById("termList");
+    const themeToggle = document.getElementById("themeToggle");
+    const menuToggle = document.getElementById("menuToggle");
+    const siteNav = document.getElementById("siteNav");
+
+    termsButton.addEventListener("click", () => {
+      const isOpen = termList.classList.toggle("open");
+      termsButton.setAttribute("aria-expanded", String(isOpen));
+      termsButton.textContent = isOpen ? "Hide term definitions" : "View term definitions";
+    });
+
+    themeToggle.addEventListener("click", () => {
+      const isDark = document.body.classList.toggle("dark");
+      themeToggle.setAttribute("aria-pressed", String(isDark));
+      themeToggle.textContent = isDark ? "☀️ Light mode" : "🌙 Dark mode";
+    });
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = siteNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "✕ Close" : "☰ Menu";
+    });
+
+    siteNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        siteNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰ Menu";
+      });
+    });
+
+    const revealItems = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const observer = new IntersectionObserver((entries, currentObserver) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            currentObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      revealItems.forEach((item) => observer.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add("visible"));
+    }
+  })();
+</script>
+</body>
+</html>
